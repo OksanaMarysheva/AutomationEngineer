@@ -1,16 +1,19 @@
-function OrderByTotal(array) {
+function OrderByTotal(array, sortingType = 'ascending') {
     const newArray = array.map(a => Object.assign({}, a))
-    newArray.map(a => a.total = a.amount * a.quantity)
+    newArray.map(a => a.Total = a.amount * a.quantity)
 
-    newArray.sort(function (a, b) {
-        if (a.total > b.total) {
-            return 1;
-        }
-        if (a.total < b.total) {
-            return -1;
-        }
-        return 0;
-    });
+    if (sortingType === 'ascending') {
+        newArray.sort(function(a, b){
+            return (a.Total === b.Total ? 0 : (a.Total < b.Total ? -1 : 1))
+        })
+    }
+
+    if (sortingType === 'descending') {
+        newArray.sort(function (a, b) {
+            return (a.Total === b.Total ? 0 : (a.Total > b.Total ? -1 : 1))
+        })
+    }
+
     return newArray
 }
 

@@ -1,6 +1,6 @@
 import ObjectProjection from "./ObjectProjection";
 
-test('ObjectProjection works with simple task', () => {
+test('ObjectProjection works with null', () => {
     const src = {
         prop11: {
             prop21: 21,
@@ -70,6 +70,36 @@ test('ObjectProjection works with depth task', () => {
                 prop221: "some value"
             }
         },
+    }
+
+    const result = ObjectProjection(src, proto)
+
+    expect(result).toEqual(res)
+});
+
+test('ObjectProjection works with {}', () => {
+    const src = {
+        prop11: {
+            prop21: 21,
+            prop22: {
+                prop31: 31,
+                prop32: 32
+            }
+        },
+        prop12: 12
+    }
+    const proto = {
+        prop11: {
+            prop22: {}
+        }
+    }
+    const res = {
+        prop11: {
+            prop22: {
+                prop31: 31,
+                prop32: 32
+            }
+        }
     }
 
     const result = ObjectProjection(src, proto)

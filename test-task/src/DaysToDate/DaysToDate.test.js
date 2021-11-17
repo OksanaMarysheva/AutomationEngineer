@@ -1,14 +1,22 @@
-import DaysToDate from "./DaysToDate";
-
-test('DaysToDate create new Date', () => {
-    const date = new DaysToDate(2021, 10, 8)
-    const defaultDate = new Date(2021, 10, 8)
-    expect(date).toEqual(defaultDate)
-});
+import * as daysTo from './DaysToDate'
 
 test('quantity of days between dates', () => {
-    const firstDate = new DaysToDate(2021, 10, 8)
-    const secondDate = new DaysToDate(2021, 10, 10)
-    const difference = firstDate.daysTo(secondDate)
+    const d1 = new Date(2021, 10, 8)
+    const d2 = new Date(2021, 10, 10)
+    const difference = d1.daysTo(d2)
+    expect(difference).toBe(2)
+});
+
+test('quantity of days between dates with hours', () => {
+    const d1 = new Date(2021, 10, 8, 5)
+    const d2 = new Date(2021, 10, 10)
+    const difference = d1.daysTo(d2)
+    expect(difference).toBe(1)
+});
+
+test('quantity of days between dates with minutes', () => {
+    const d1 = new Date(2021, 10, 14, 0, 1)
+    const d2 = new Date(2021, 10, 17)
+    const difference = d1.daysTo(d2)
     expect(difference).toBe(2)
 });

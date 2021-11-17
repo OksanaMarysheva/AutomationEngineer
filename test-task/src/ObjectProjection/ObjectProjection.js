@@ -1,5 +1,8 @@
 function ObjectProjection(obj, proto) {
     let newObj = {}
+    if (Object.keys(proto).length === 0 && obj.constructor === Object) {
+        newObj = obj
+    }
     for (let key in obj) {
         if (proto.hasOwnProperty(key)) {
             if (Object.prototype.toString.call(obj[key]) === "[object String]" && proto[key] instanceof Object && !Array.isArray(proto[key])) {
