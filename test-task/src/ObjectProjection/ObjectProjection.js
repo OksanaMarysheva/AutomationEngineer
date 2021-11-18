@@ -1,6 +1,6 @@
 function ObjectProjection(obj, proto) {
     let newObj = {}
-    if (Object.keys(proto).length === 0 && obj.constructor === Object) {
+    if (Object.keys(proto).length === 0 && proto.constructor === Object) {
         newObj = obj
     }
     for (let key in obj) {

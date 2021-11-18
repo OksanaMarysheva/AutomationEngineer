@@ -1,4 +1,4 @@
-function OrderByTotal(array, sortingType = 'ascending') {
+function OrderByTotal(array, sortingType) {
     const newArray = array.map(a => Object.assign({}, a))
     newArray.map(a => a.Total = a.amount * a.quantity)
 
@@ -14,7 +14,9 @@ function OrderByTotal(array, sortingType = 'ascending') {
         })
     }
 
-    return newArray
+    if (sortingType) {
+        return newArray
+    }
 }
 
 export default OrderByTotal
