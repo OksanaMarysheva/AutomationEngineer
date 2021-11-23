@@ -14,9 +14,11 @@ function OrderByTotal(array, sortingType) {
         })
     }
 
-    if (sortingType) {
+    if (sortingType === 'descending' || sortingType === 'ascending') {
         return newArray
     }
+
+    return 'Wrong or absent second argument. Please write correct second argument'
 }
 
 export default OrderByTotal

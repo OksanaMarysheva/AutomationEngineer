@@ -34,7 +34,7 @@ test('OrderByTotal create new descending sorted array with Total', () => {
     expect(result).toEqual(defaultResult)
 });
 
-test('OrderByTotal', () => {
+test('OrderByTotal without second argument', () => {
     const array = [
         {amount: 40000, quantity: 40},
         {amount: 20000, quantity: 20},
@@ -42,13 +42,20 @@ test('OrderByTotal', () => {
         {amount: 30000, quantity: 30}
     ]
     const result = OrderByTotal(array)
-    const defaultResult = [
-        {amount: 40000, quantity: 40, Total: 1600000},
-        {amount: 30000, quantity: 30, Total: 900000},
-        {amount: 20000, quantity: 20, Total: 400000},
-        {amount: 10000, quantity: 10, Total: 100000}
+    const defaultResult = 'Wrong or absent second argument. Please write correct second argument'
+    expect(result).toEqual(defaultResult)
+});
+
+test('OrderByTotal with wrong second argument', () => {
+    const array = [
+        {amount: 40000, quantity: 40},
+        {amount: 20000, quantity: 20},
+        {amount: 10000, quantity: 10},
+        {amount: 30000, quantity: 30}
     ]
-    expect(result).toBeUndefined()
+    const result = OrderByTotal(array, 'wrong')
+    const defaultResult = 'Wrong or absent second argument. Please write correct second argument'
+    expect(result).toEqual(defaultResult)
 });
 
 
